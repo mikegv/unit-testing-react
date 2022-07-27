@@ -39,6 +39,12 @@ describe('App component',()=>{
     expect(changedText).toBeInTheDocument();
   })
 
+  test('renders correct link', () =>{
+    render(<App />)
+    const linkElement = screen.getByText('Udemy', {exact: false})
+    expect(linkElement.href).toContain('udemy.com')
+  })
+
   test('renders items after fetch', async () => {
     window.fetch = jest.fn();
     window.fetch.mockResolvedValueOnce({
@@ -62,5 +68,6 @@ describe('App component',()=>{
     expect(textElement).toBeInTheDocument();
     expect(itemElements).not.toHaveLength(0);
   })
+
 
 })
